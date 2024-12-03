@@ -1,0 +1,23 @@
+<div>
+
+  <h3>User List</h3>
+  <ul class="list-none p-0 m-0 flex flex-column gap-3">
+    <li *ngFor="let user of (users$ | async)"
+      class="flex align-items-center justify-content-between border-round shadow-1 p-3 surface-card">
+      <span class="text-lg font-medium">{{ user.name }}</span>
+      <p-button label="Select" (click)="onUserClick(user.id)" [text]="true" [raised]="true" class="ml-2"></p-button>
+    </li>
+  </ul>
+
+  <app-user-orders></app-user-orders>
+  <div *ngIf="(selectedUser$ | async)">
+    <h3>Liast Of {{(selectedUser$ | async)?.name}}'s Orders</h3>
+    <ul class="list-none p-0 m-0 flex flex-column gap-2  surface-200">
+      <li *ngFor="let order of (orders$ | async)" class="p-2 mt-1 border-round font-medium">
+        Order ID: <span class="font-medium">{{ order.id }}</span>,
+        Total: <span class="font-medium">{{ order.total | currency }}</span>
+      </li>
+    </ul>
+
+  </div>
+</div>

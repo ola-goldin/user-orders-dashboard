@@ -1,0 +1,16 @@
+<div class="flex flex-row gap-0 ">
+  <p-card *ngIf="(selectedUser$ | async)" class="p-3 pl-0 w-6 w-sm-12">
+    <p-fieldset [legend]="(usersTotal$ | async)?.userName">
+      <p class="m-0 text-sm font-medium">
+        Total orders sum: {{ (usersTotal$ | async)?.totalSum | currency }}
+      </p>
+    </p-fieldset>
+  </p-card>
+
+  <p-card *ngIf="(selectedUser$ | async)" class="p-3 pr-0 w-6 w-sm-12">
+    <div class="flex flex-column gap-3">
+      <app-user-name></app-user-name>
+      <app-total-amount></app-total-amount>
+    </div>
+  </p-card>
+</div>
