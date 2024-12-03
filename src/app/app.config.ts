@@ -6,14 +6,12 @@ import { provideEffects } from '@ngrx/effects';
 import { orderReducer } from './state/order/order.reducer';
 import { userReducer } from './state/user/user.reducer';
 import { UserEffects } from './state/user/user.effect';
+import { rootReducer } from './state/root.reducer';
 
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideStore({
-      orders: orderReducer, 
-      users: userReducer 
-    }),
+    provideStore(rootReducer),
     provideAnimations(),
     provideHttpClient(),
     provideEffects([UserEffects]),
